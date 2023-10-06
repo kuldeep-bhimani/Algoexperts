@@ -23,24 +23,51 @@ Sample Output
 
 #
 
-## Approach 1: Brute Force (Two for loops)
+## Approach 1: Brute Force (one for loop)
 
 ```PYTHON
 
+def twoNumberSum(array, targetSum):
+    # Write your code here.
+    for i in array:
+        sum=targetSum-i
+
+        if sum in array and sum != i:
+            print(sum,i)
+            return [sum, i]
+    return []
 
 ```
 
 ### Complexity Analysis
 
-- Time Complexity: O(N^2), where N is the length of the input array.
+- Time Complexity: O(N), where N is the length of the input array.
 - Space Complexity: O(1).
 
 #
 
-## Approach 2: One Pass with Hash Table
+## Approach 2: One Pass with Two Pointers
 
 ```PYTHON
 
+def twoNumberSum(array, targetSum):
+    # sorting array
+    sorted_array=array.sort()
+    # pointers at the start & end of array
+    left=0
+    right=len(array)-1
+
+    # looping array and summing it's last and first value
+    # if sum is greater than target then must decrement pointer from the end
+    for item in array:
+        sum=array[left]+array[right]
+        if sum == targetSum:
+            return [array[left], array[right]]
+        elif sum > targetSum:
+            right=right-1
+        else:
+            left=left+1
+    return []
 
 ```
 
@@ -48,17 +75,3 @@ Sample Output
 
 - Time Complexity: O(N), where N is the length of the input array.
 - Space Complexity: O(N), where N is the length of the input array.
-
-#
-
-## Approach 3: Sort + Two Pointers
-
-```PYTHON
-
-
-```
-
-### Complexity Analysis
-
-- Time Complexity: O(N \* log(N)), where N is the length of the input array.
-- Space Complexity: O(log(N)) or O(N), depending on the implementation of the sorting algorithm.
