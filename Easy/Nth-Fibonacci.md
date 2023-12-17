@@ -38,7 +38,7 @@ n = 6
 
 #
 
-## Approach 1:
+## Approach 1: BruteForce
 
 ```PYTHON
 def getNthFib(n):
@@ -63,5 +63,23 @@ def getNthFib(n):
 
 ### Complexity Analysis
 
-- Time Complexity: O(nlogn), where N is the length of the input array.
+- Time Complexity: O(n), where N is the length of the input array.
 - Space Complexity: O(1).
+
+## Approach 2: Recursive
+
+```PYTHON
+def getNthFib(n):
+    if n == 1:
+        return 0
+    elif n == 2:
+        return 1
+    else:
+        return getNthFib(n - 1) + getNthFib(n - 2)
+
+```
+
+### Complexity Analysis
+
+- Time Complexity: O(2^n), where N is the length of the input array.
+- Space Complexity: O(n).
